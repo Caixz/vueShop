@@ -9,6 +9,8 @@ import imageS from '../components/imageShare/imageS.vue'
 import imageInfo from '../components/imageShare/imageInfo.vue'
 import shopping from '../components/home/shopping.vue'
 import shoppinginfo from '../components/home/shoppinginfo.vue'
+import introduce from '../components/home/shoppingdetail.vue'
+import comit from '../components/home/shoppingcomit.vue'
 
 // 3. 创建路由对象
 var router = new vueRouter({
@@ -24,6 +26,8 @@ var router = new vueRouter({
     {path:'/home/imageShare/imageInfo/:id',component:imageInfo},
     {path:'/home/shopping',component:shopping},
     {path:'/home/shopping/shoppinginfo/:id',component:shoppinginfo},
+    {path:'/home/shopping/introduce/:id',component:introduce},
+    {path:'/home/shopping/comit/:id',component:comit},
 
 
   ],
