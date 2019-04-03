@@ -1,7 +1,11 @@
 <template>
   <div class="container">
     <!-- header -->
-      <mt-header fixed title="大帅锅"></mt-header>
+      <mt-header fixed title="大帅锅">
+				<span  slot="left" @click="goback" v-show="flag">
+   		 <mt-button icon="back">返回</mt-button>
+  			</span>
+			</mt-header>
     <!-- content -->
 
 	<transition>
@@ -19,7 +23,7 @@
 			</router-link>
 			<router-link class="mui-tab-item-lib" to="/shopcar">
 				<span class="mui-icon mui-icon-extra-cart mui-icon-extra ">
-					<span class="mui-badge" id="num">0</span>
+					<span class="mui-badge" id="num">{{$store.getters.getTotal}}</span>
 					</span>
 				<span class="mui-tab-label">购物车</span>
 			</router-link>
@@ -35,8 +39,33 @@
 </template>
 
 <script>
-</script>
+export default {
+		data(){
+			return {
+				flag:false
+			}
+		},
+		created(){
+			this.flag = this.$route.path === '/home' ? false : true;
+		},
+	methods:{	
+		goback(){
+			this.$router.go(-1);
 
+		}
+
+	},
+		watch: {
+			"$route.path":function(newVal){
+				if(newVal === '/home'){
+					this.flag = false;
+				}else {
+					this.flag = true;
+				}
+			}
+		}
+}
+</script>
 
 <style lang="scss" scoped>
 
